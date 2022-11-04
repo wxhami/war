@@ -2,18 +2,18 @@
 
 public abstract class Unit
 {
-    public int health;
-    public int def;
-    public UnitType type;
-    public int damage;
+    public int Health;
+    public int Def;
+    public UnitType Type;
+    public int Damage;
 
     public virtual void Show()
     {
-        Console.WriteLine($"health:\n{health}  \ndef:{def}  \ntype:{type}");
+        Console.WriteLine($"health:\n{Health}  \ndef:{Def}  \ntype:{Type}");
     }
 
     public virtual int Attack()
     {
-        return damage;
+        return Damage;
     }
 }
