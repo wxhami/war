@@ -9,7 +9,7 @@ public abstract class Unit
 
     public virtual void Show()
     {
-        Console.WriteLine($"health:\n{Health}  \ndef:{Def}  \ntype:{Type}");
+        Console.WriteLine($"health:\n{Health}  \ndef:{Def}  \ntype:{Type} \ndamage:{Damage}");
     }
 
     public virtual int Attack()
