@@ -18,6 +18,11 @@ public class Mechanism : Unit
         return Ammunition.Damage;
     }
 
+    public Mechanism(Ammunition ammunition, int ammunitionCount)
+    {
+        Ammunition = ammunition;
+        AmmunitionCount = ammunitionCount;
+    }
     public override void Show()
     {
         Console.WriteLine($"health:\n{Health}  \ndef:{Def}  \ntype:{Type} \nAmmunition Count: {AmmunitionCount}");

@@ -7,6 +7,7 @@ public abstract class Unit
     public UnitType Type;
     public int Damage;
 
+  
     public virtual void Show()
     {
         Console.WriteLine($"health:\n{Health}  \ndef:{Def}  \ntype:{Type} \ndamage:{Damage}");

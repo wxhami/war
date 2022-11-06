@@ -5,8 +5,10 @@ public class Rider : Unit
     public Solder Solder;
     public Animal Animal;
 
-    public Rider()
+    public Rider(Solder solder, Animal animal)
     {
+        Solder = solder;
+        Animal = animal;
         Health = Solder.Health + Animal.Health;
         Def = Solder.Def + Animal.Def;
         Damage = Solder.Damage + Animal.Damage;
