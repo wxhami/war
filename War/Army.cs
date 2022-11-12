@@ -7,7 +7,23 @@ public class Army
 {
     public List<Unit> Units;
     public int UnitCount => Units.Count;
+    public bool IsALive => CheckAlive();
 
+
+    public bool CheckAlive()
+    {
+        foreach (var unit in Units)
+        {
+            if (unit.IsALive)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    
     public void Show()
     {
         Console.WriteLine($"\nArmy damage: {GetDamageSum()} \nArmy health: {GetHealthsum()} \nArmy def: {GetDefSum()} ");

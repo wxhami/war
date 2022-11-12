@@ -6,6 +6,7 @@ public abstract class Unit
     public int Def;
     public UnitType Type;
     public int Damage;
+    public bool IsALive => Health > 0;
 
   
     public virtual void Show()

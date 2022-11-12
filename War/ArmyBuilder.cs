@@ -5,11 +5,16 @@ namespace War;
 
 public class ArmyBuilder
 {
-    private Army army;
+    private Army _army;
 
     public ArmyBuilder()
     {
-        army = new Army();
+        _army = new Army();
+    }
+
+    public Army Build()
+    {
+        return _army;
     }
     
     public void AddRider()
@@ -17,12 +22,12 @@ public class ArmyBuilder
         Solder solder = CreateSolder();
         Animal animal = new Animal();
         Rider rider = new Rider(solder, animal);
-        army.Units.Add(rider);
+        _army.Units.Add(rider);
     }
 
     public void AddSolder()
     {
-        army.Units.Add(CreateSolder());
+        _army.Units.Add(CreateSolder());
         
     }
 
@@ -32,14 +37,14 @@ public class ArmyBuilder
        int damage = new Random().Next(40, 50);
        Ammunition ammunition = new Ammunition(damage);
        Mechanism mechanism = new Mechanism(ammunition, ammutionCount);
-       army.Units.Add(mechanism);
+       _army.Units.Add(mechanism);
         
     }
 
     public void AddAnimal()
     {
        Unit animal = new Animal();
-       army.Units.Add(animal);
+       _army.Units.Add(animal);
     }
 
     private Solder CreateSolder()
