@@ -9,6 +9,10 @@ public class Solder: Unit
     public Solder(Armor armor)
     {
         Armor = armor;
+        Health = 50;
+        Def = 10 + armor.Def;
+        Damage = 80;
+        Type = UnitType.Solder;
     }
     public override void Show()
     {

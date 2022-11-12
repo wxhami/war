@@ -12,6 +12,7 @@ public class Rider : Unit
         Health = Solder.Health + Animal.Health;
         Def = Solder.Def + Animal.Def;
         Damage = Solder.Damage + Animal.Damage;
+        Type = UnitType.Rider;
     }
 
     public override void Show()

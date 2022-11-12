@@ -22,9 +22,12 @@ public class Mechanism : Unit
     {
         Ammunition = ammunition;
         AmmunitionCount = ammunitionCount;
+        Health = 150;
+        Type = UnitType.Mechanism;
+
     }
     public override void Show()
     {
-        Console.WriteLine($"health:\n{Health}  \ndef:{Def}  \ntype:{Type} \nAmmunition Count: {AmmunitionCount}");
+        Console.WriteLine($"type:{Type} \nhealth:\n{Health}  \ndef:{Def}  \nAmmunition Count: {AmmunitionCount}\n \tAmmunition Damage: {Ammunition.Damage}\n\tAmmunition Name: {Ammunition.Name} \n");
     }
 }

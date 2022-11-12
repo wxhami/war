@@ -5,7 +5,7 @@ namespace War;
 
 public class Army
 {
-    public List<Unit> Units;
+    public List<Unit> Units = new List<Unit>();
     public int UnitCount => Units.Count;
     public bool IsALive => CheckAlive();
 
@@ -26,7 +26,8 @@ public class Army
     
     public void Show()
     {
-        Console.WriteLine($"\nArmy damage: {GetDamageSum()} \nArmy health: {GetHealthsum()} \nArmy def: {GetDefSum()} ");
+        Console.WriteLine($"\nArmy damage: {GetDamageSum()} \nArmy health: {GetHealthsum()} \nArmy def: {GetDefSum()} \nUnits: " );
+        ShowUnits();
     }
     public int GetDamageSum()
     {
@@ -60,4 +61,25 @@ public class Army
 
         return def;
     }
+
+    private void ShowUnits()
+    {
+        foreach (var unit in Units)
+        {
+            unit.Show();
+            
+        }
+    }
+
+    public int Attack()
+    {
+        int attackSum = 0;
+        foreach (var unit in Units)
+        {
+            attackSum += unit.Attack();
+        }
+
+        return attackSum;
+    }
+    
 }

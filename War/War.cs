@@ -36,57 +36,69 @@ public class War
     }
 
 
-    public Army Play()
+    public string Play()
     {
-        int PlayerDef = PlayerArmy.GetDefSum();
+        int playerDef = PlayerArmy.GetDefSum();
         int opponentDef = OpponentArmy.GetDefSum();
 
         while (OpponentArmy.CheckAlive() && PlayerArmy.CheckAlive())
         {
-            int playerDamage = PlayerArmy.GetDamageSum();
+            Console.WriteLine("Player is attacking...");
+            int playerDamage = PlayerArmy.Attack();
 
             playerDamage = playerDamage - opponentDef;
 
-            foreach (var unit in OpponentArmy.Units)
+            if (playerDamage > 0)
             {
-                int damage = playerDamage - unit.Health;
-
-                if (damage <= 0)
+                foreach (var unit in OpponentArmy.Units)
                 {
-                    unit.Health = unit.Health - playerDamage;
-                    playerDamage = 0;
-                    break;
-                }
+                    int damage = playerDamage - unit.Health;
 
-                playerDamage = playerDamage - unit.Health;
-                unit.Health = 0;
+                    if (damage <= 0)
+                    {
+                        unit.Health = unit.Health - playerDamage;
+                        playerDamage = 0;
+                        break;
+                    }
+
+                    playerDamage = playerDamage - unit.Health;
+                    unit.Health = 0;
+                    Console.WriteLine($"\tUnit {unit.Type} died");
+                }
             }
-            
-            int opponentDamage = OpponentArmy.GetDamageSum();
 
-            foreach (var unit in PlayerArmy.Units)
+            Console.WriteLine("Comp is attacking...");
+            int opponentDamage = OpponentArmy.Attack();
+
+            opponentDamage = opponentDamage - playerDef;
+
+            if (opponentDamage > 0)
             {
-                int damage = opponentDamage - unit.Health;
-
-                if (damage <= 0)
+                foreach (var unit in PlayerArmy.Units)
                 {
-                    unit.Health = unit.Health - opponentDamage;
-                    opponentDamage = 0;
-                    break;
-                }
+                    int damage = opponentDamage - unit.Health;
 
-                opponentDamage = opponentDamage - unit.Health;
-                unit.Health = 0;
+                    if (damage <= 0)
+                    {
+                        unit.Health = unit.Health - opponentDamage;
+                        opponentDamage = 0;
+                        break;
+                    }
+
+                    opponentDamage = opponentDamage - unit.Health;
+                    unit.Health = 0;
+                    Console.WriteLine($"\tUnit {unit.Type} died.");
+                }
             }
         }
 
         if (PlayerArmy.CheckAlive())
         {
-            return PlayerArmy;
+            return "Player win!";
         }
         else if (OpponentArmy.CheckAlive())
         {
-            return OpponentArmy;
+            return "Computer win!";
         }
 
         return null;
